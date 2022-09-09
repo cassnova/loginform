@@ -21,6 +21,7 @@ function LoginCard() {
   const [isLoading, setIsLoading] = useState(false);
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [loginError, setLoginError] = useState(null);
+  const [logoutError, setLogoutError] = useState(false);
 
   const handleInput = (e) => {
     setUsernameInput(e.target.value);
@@ -46,13 +47,15 @@ function LoginCard() {
   };
 
   const logout = () => {
-    setTimeout(() => {
+    let random = Math.floor(Math.random() * 10)
+    random > 1 ? setTimeout(() => {
       setUsernameInput("")
       setPassInput("")
       setIsLoading(false)
       setLoginSuccess(false)
       setLoginError(null)
-    }, 3000)
+    }, 3000) : setLogoutError(true)
+
   };
 
   return (
@@ -97,6 +100,11 @@ function LoginCard() {
           )}
           {loginSuccess && (
             <span className="success-message">Login Exitoso!</span>
+          )}
+          {logoutError && (
+            <span className="error-message">
+              No se pudo cerrar sesión.
+            </span>
           )}
         </form>
       </div>
