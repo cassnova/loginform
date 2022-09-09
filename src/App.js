@@ -46,8 +46,13 @@ function LoginCard() {
   };
 
   const logout = () => {
-    // Acá debes escribir los pasos necesarios para poder
-    //realizar el logout de la cuenta.
+    setTimeout(() => {
+      setUsernameInput("")
+      setPassInput("")
+      setIsLoading(false)
+      setLoginSuccess(false)
+      setLoginError(null)
+    }, 3000)
   };
 
   return (
